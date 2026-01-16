@@ -63,9 +63,15 @@ echo "  WORK:     ${WORK_DIR}"
 echo "  License:  ${FS_LIC}"
 echo ""
 
+# avoid oversubscribing when running multiple instances of fmriprep
+export OMP_NUM_THREADS=1
+export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
+
+
 fmriprep "${BIDS_DIR}" "${OUT_DIR}" participant \
   --participant_label "${sub}" \
   --stop-on-first-crash \
   --fs-license-file "${FS_LIC}" \
   --fs-no-reconall \
+  --nthreads 12 --omp-nthreads 1 --mem-mb 30000 \
   -w "${WORK_DIR}"
