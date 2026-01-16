@@ -19,7 +19,7 @@ for subrun in "104 5" "105 5" "106 3" "107 5" "108 5" "109 2" "110 2" "111 5" "1
 	sub=$1
 	nruns=$2
 	
-  	NCORES=2
+  	NCORES=10
   	while [ $(ps -ef | grep -v grep | grep $script | wc -l) -ge $NCORES ]; do
  		sleep 1s
   	done

@@ -37,7 +37,6 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 BIDS_DIR="${repo_root}/bids"
 OUT_DIR="${repo_root}/derivatives"
-mkdir -p $OUT_DIR
 
 # FreeSurfer license MUST be here
 FS_LIC="${HOME}/.license"
@@ -47,18 +46,14 @@ if [[ ! -r "${FS_LIC}" ]]; then
   exit 1
 fi
 
-# fMRIPrep work directory (large). Keep it off persistent storage.
-WORK_DIR="/tmp/fareri-2022-neuroimage_fmriprep_work"
+# fMRIPrep work directory (large). Not sure where to put this.
+WORK_DIR=${repo_root}/scratch
 
 # Optional: keep FreeSurfer outputs in a predictable place
 FS_SUBJECTS_DIR="${OUT_DIR}/freesurfer"
 
 mkdir -p "${OUT_DIR}" "${WORK_DIR}" "${FS_SUBJECTS_DIR}"
 
-# Resource settings (safe defaults). Adjust if needed.
-NTHREADS="${NTHREADS:-4}"
-OMP_NTHREADS="${OMP_NTHREADS:-2}"
-MEM_MB="${MEM_MB:-24000}"
 
 echo "== fMRIPrep =="
 echo "  Subject:  ${sub}"
@@ -73,7 +68,4 @@ fmriprep "${BIDS_DIR}" "${OUT_DIR}" participant \
   --stop-on-first-crash \
   --fs-license-file "${FS_LIC}" \
   --fs-no-reconall \
-  --nthreads "${NTHREADS}" \
-  --omp-nthreads "${OMP_NTHREADS}" \
-  --mem-mb "${MEM_MB}" \
   -w "${WORK_DIR}"
