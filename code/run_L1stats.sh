@@ -27,7 +27,6 @@ fi
 # Limit the number of concurrent FEAT jobs.
 
 NCORES=20
-(( NCORES < 1 )) && NCORES=1
 
 # Hard-coded list: "SUBJECT_ID N_RUNS"
 SUBJECT_RUNS=(
@@ -39,7 +38,7 @@ SUBJECT_RUNS=(
 )
 
 # Run activation first, then network PPIs
-for ppi in 0 dmn ecn; do
+for ppi in 0 VMPFC VS dmn ecn; do
   for subrun in "${SUBJECT_RUNS[@]}"; do
     set -- $subrun
     sub="$1"
