@@ -20,6 +20,9 @@ sub=$1
 run=$2
 ppi=$3 # 0 for activation, otherwise seed region or network
 
+# load fsl
+ml fsl/6.0.7.16
+
 # list of exclusions/skips (study specific)
 if [ $sub -eq 150 -a $run -eq 2 ]; then
 	echo "participant fell asleep. skip run"
