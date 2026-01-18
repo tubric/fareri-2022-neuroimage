@@ -1,0 +1,3 @@
+[submodule "tools/bidsutils"]
+	path = tools/bidsutils
+	url = https://github.com/bids-standard/bidsutils.git
