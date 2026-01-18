@@ -38,7 +38,7 @@ SUBJECT_RUNS=(
 )
 
 # Run activation first, then network PPIs
-for ppi in 0 VMPFC VS dmn ecn; do
+for ppi in 0 VMPFCwin VMPFCface VS dmn ecn; do
   for subrun in "${SUBJECT_RUNS[@]}"; do
     set -- $subrun
     sub="$1"
