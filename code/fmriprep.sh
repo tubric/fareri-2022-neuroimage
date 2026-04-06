@@ -22,13 +22,6 @@ if command -v ml >/dev/null 2>&1; then
   ml fmriprep/25.2.5
 fi
 
-# Confirm fmriprep is available
-if ! command -v fmriprep >/dev/null 2>&1; then
-  echo "ERROR: fmriprep is not on PATH." >&2
-  echo "If you are using Neurodesk modules, run: ml fmriprep/20.2.3" >&2
-  exit 1
-fi
-
 
 sub="${1:?Usage: $0 <SUBJECT_ID>}"
 
