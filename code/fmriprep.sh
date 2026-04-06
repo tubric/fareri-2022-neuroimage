@@ -39,32 +39,38 @@ if [[ ! -r "${FS_LIC}" ]]; then
   exit 1
 fi
 
-# fMRIPrep work directory (large). Not sure where to put this.
-WORK_DIR=${repo_root}/scratch
+# fMRIPrep work directory
+WORK_DIR="${repo_root}/scratch"
 
-# Optional: keep FreeSurfer outputs in a predictable place
+# Keep FreeSurfer-related outputs in a predictable place
 FS_SUBJECTS_DIR="${OUT_DIR}/freesurfer"
 
 mkdir -p "${OUT_DIR}" "${WORK_DIR}" "${FS_SUBJECTS_DIR}"
 
+# Make sure we do not inherit a stale SUBJECTS_DIR from the environment
+export SUBJECTS_DIR="${FS_SUBJECTS_DIR}"
 
 echo "== fMRIPrep =="
-echo "  Subject:  ${sub}"
-echo "  BIDS:     ${BIDS_DIR}"
-echo "  OUT:      ${OUT_DIR}"
-echo "  WORK:     ${WORK_DIR}"
-echo "  License:  ${FS_LIC}"
+echo "  Subject:      ${sub}"
+echo "  BIDS:         ${BIDS_DIR}"
+echo "  OUT:          ${OUT_DIR}"
+echo "  WORK:         ${WORK_DIR}"
+echo "  FS subjects:  ${FS_SUBJECTS_DIR}"
+echo "  License:      ${FS_LIC}"
 echo ""
 
 # avoid oversubscribing when running multiple instances of fmriprep
 export OMP_NUM_THREADS=1
 export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
 
-
 fmriprep "${BIDS_DIR}" "${OUT_DIR}" participant \
-  --participant_label "${sub}" \
+  --participant-label "${sub}" \
   --stop-on-first-crash \
   --fs-license-file "${FS_LIC}" \
+  --fs-subjects-dir "${FS_SUBJECTS_DIR}" \
   --fs-no-reconall \
-  --nthreads 12 --omp-nthreads 1 --mem-mb 30000 \
+  --skip-bids-validation \
+  --nthreads 12 \
+  --omp-nthreads 1 \
+  --mem-mb 30000 \
   -w "${WORK_DIR}"

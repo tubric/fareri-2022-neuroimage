@@ -11,6 +11,8 @@
 
 set -euo pipefail
 
+ml fmriprep/25.2.5
+
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 script="${repo_root}/code/fmriprep.sh"
 
