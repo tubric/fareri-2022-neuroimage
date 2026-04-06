@@ -19,7 +19,7 @@ set -euo pipefail
 # Load fMRIPrep in Neurodesk (module system).
 # If your system uses Neurodesk modules, this puts the requested fMRIPrep version on PATH.
 if command -v ml >/dev/null 2>&1; then
-  ml fmriprep/20.2.3
+  ml fmriprep/25.2.5
 fi
 
 # Confirm fmriprep is available
