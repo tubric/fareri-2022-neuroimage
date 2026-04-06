@@ -28,7 +28,7 @@ sub="${1:?Usage: $0 <SUBJECT_ID>}"
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BIDS_DIR="${repo_root}/bids"
-OUT_DIR="${repo_root}/derivatives"
+OUT_DIR="${repo_root}/derivatives/fmriprep"
 WORK_DIR="${repo_root}/scratch/sub-${sub}"
 FS_SUBJECTS_DIR="${OUT_DIR}/freesurfer"
 FS_LIC="${HOME}/.license"
