@@ -14,7 +14,6 @@
 #   - This script is intentionally simple (novice-friendly).
 #   - fMRIPrep produces a large working directory, so we use /tmp by default.
 
-s#!/usr/bin/env bash
 set -euo pipefail
 
 if command -v ml >/dev/null 2>&1; then
