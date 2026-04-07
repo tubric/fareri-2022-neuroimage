@@ -32,8 +32,8 @@ fi
 # set inputs and general outputs (should not need to chage across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
-DATA=${maindir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz
-CONFOUNDEVS=${maindir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_run-${run}_desc-fslConfounds.tsv
+DATA=${maindir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-0${run}_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz
+CONFOUNDEVS=${maindir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_run-0${run}_desc-fslConfounds.tsv
 if [ ! -e $CONFOUNDEVS ]; then
 	echo "missing: $CONFOUNDEVS " >> ${maindir}/re-runL1.log
 	exit # exiting to ensure nothing gets run without confounds
