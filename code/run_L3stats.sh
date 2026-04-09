@@ -60,15 +60,16 @@ NCORES="${NCORES:-4}"
 #
 # If you are not using some analysis types, remove them from this list.
 # -----------------------------------------------------------------------------
-ANALYSES=(
+TYPES=(
   act
   ppi_seed-vs
   ppi_seed-VMPFCwin
-  ppi_seed-VMPFCface
-  nppi-dmn
-  nppi-ecn
 )
 
+#ppi_seed-VMPFCface
+#  nppi-dmn
+ # nppi-ecn
+ 
 # Contrast list: "COPE_NUMBER COPE_NAME"
 # Note: Contrast N for PPI is often "phys" in these models.
 COPELIST=(

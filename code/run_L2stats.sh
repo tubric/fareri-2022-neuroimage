@@ -55,10 +55,11 @@ TYPES=(
   act
   ppi_seed-vs
   ppi_seed-VMPFCwin
-  ppi_seed-VMPFCface
-  nppi-dmn
-  nppi-ecn
 )
+
+#ppi_seed-VMPFCface
+#  nppi-dmn
+ # nppi-ecn
 
 # Hard-coded list: "SUBJECT_ID N_RUNS"
 SUBJECT_RUNS=(
